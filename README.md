@@ -60,7 +60,7 @@ backend_chat_app/
 
 # Báo cáo
 - client: https://github.com/ducvnkm2k4/chat_app.git
-- máy học: https://github.com/ducvnkm2k4/btl_dmml_net.git
+- máy học: https://github.com/ducvnkm2k4/predict-url-phishing.git
 - báo cáo nghiên cứu: https://docs.google.com/document/d/1omlw5fgTNDKg2MKwOU_6PcMlskKjncK8jpQO8l9orgg/edit?tab=t.0
 
 # Backend
