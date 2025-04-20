@@ -59,9 +59,9 @@ backend_chat_app/
    - Sử dụng mô hình máy học để phân tích
 
 # Báo cáo
-client: https://github.com/ducvnkm2k4/chat_app.git
-máy học: https://github.com/ducvnkm2k4/btl_dmml_net.git
-báo cáo nghiên cứu: https://docs.google.com/document/d/1omlw5fgTNDKg2MKwOU_6PcMlskKjncK8jpQO8l9orgg/edit?tab=t.0
+- client: https://github.com/ducvnkm2k4/chat_app.git
+- máy học: https://github.com/ducvnkm2k4/btl_dmml_net.git
+- báo cáo nghiên cứu: https://docs.google.com/document/d/1omlw5fgTNDKg2MKwOU_6PcMlskKjncK8jpQO8l9orgg/edit?tab=t.0
 
 # Backend
 - Flask framework
