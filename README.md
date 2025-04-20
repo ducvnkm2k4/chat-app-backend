@@ -1,73 +1,75 @@
-# Flask Backend Application
+# BTL Khai phá dữ liệu và máy học trong an toàn hệ thống
 
-This is a Flask-based backend application with optimized structure and setup.
+## Giới thiệu
+Dự án này tập trung vào việc phát triển một hệ thống chat với khả năng phát hiện URL lừa đảo (phishing) sử dụng máy học. Hệ thống bao gồm backend xử lý API và tích hợp mô hình máy học để phân tích tin nhắn.
 
-## Project Structure
-
+## Cấu trúc dự án
 ```
-.
-├── src/                    # Source code directory
-│   ├── __init__.py        # Application factory
-│   ├── models/            # Database models
-│   │   ├── __init__.py
-│   │   └── user.py
-│   ├── routes/            # API routes
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   └── utils/             # Utility functions
-│       └── response.py
-├── app.py                 # Application entry point
-├── requirements.txt       # Project dependencies
-├── .env                  # Environment variables
-└── README.md             # Project documentation
+backend_chat_app/
+├── src/
+│   ├── models/         # Các model database
+│   ├── routes/         # API endpoints
+│   ├── services/       # Business logic và ML models
+│   ├── static/         # Static files (CSS, JS)
+│   ├── templates/      # HTML templates
+│   └── utils/          # Utility functions
+├── requirements.txt    # Python dependencies
+└── .env               # Environment variables
 ```
 
-## Setup
+## API Documentation
 
-1. Create a virtual environment:
-```bash
-python -m venv venv
-```
+### Authentication
+- **POST** `/api/login`
+  - Đăng nhập người dùng
+  - Request body: `{ "username": string, "password": string }`
+  - Response: `{ "token": string, "user": object }`
 
-2. Activate the virtual environment:
-- Windows:
-```bash
-.\venv\Scripts\activate
-```
-- Linux/Mac:
-```bash
-source venv/bin/activate
-```
+- **POST** `/api/register`
+  - Đăng ký người dùng mới
+  - Request body: `{ "username": string, "password": string, "email": string }`
+  - Response: `{ "message": string, "user": object }`
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+### Chat
+- **POST** `/api/messages`
+  - Gửi tin nhắn mới
+  - Request body: `{ "message": string, "userid": number }`
+  - Response: `{ "message": object, "is_phishing": boolean }`
 
-4. Configure environment variables:
-- Copy `.env.example` to `.env`
-- Update the variables in `.env` as needed
+- **GET** `/api/messages`
+  - Lấy danh sách tin nhắn
+  - Response: `{ "messages": array }`
 
-## Running the Application
+### WebSocket Events
+- `connect`: Kết nối WebSocket
+- `disconnect`: Ngắt kết nối WebSocket
+- `message`: Nhận tin nhắn mới
+- `new_message`: Broadcast tin nhắn mới đến tất cả client
 
-To run the application in development mode:
-```bash
-flask run
-```
+## Tính năng chính
+1. **Authentication**
+   - Đăng ký/đăng nhập người dùng
 
-The server will start at `http://localhost:5000`
+2. **Real-time Chat**
+   - WebSocket cho giao tiếp real-time
+   - Broadcast tin nhắn đến tất cả người dùng
 
-## API Endpoints
+3. **Phishing Detection**
+   - Phát hiện URL lừa đảo trong tin nhắn
+   - Sử dụng mô hình máy học để phân tích
 
-- `GET /api/health`: Health check endpoint
-- `GET /api/users`: Get all users endpoint
+## Báo cáo
+client: https://github.com/ducvnkm2k4/chat_app.git
+máy học: https://github.com/ducvnkm2k4/btl_dmml_net.git
+báo cáo nghiên cứu: https://docs.google.com/document/d/1omlw5fgTNDKg2MKwOU_6PcMlskKjncK8jpQO8l9orgg/edit?tab=t.0
 
-## Features
+### Backend
+- Flask framework
+- SQLAlchemy ORM
+- Flask-SocketIO cho real-time communication
 
-- Optimized project structure
-- SQLAlchemy database integration
-- Password hashing with bcrypt
-- Standardized API responses
-- CORS support
-- Environment variable configuration
-- Error handling 
+### Máy học
+- Mô hình phát hiện phishing URL
+- Xử lý và phân tích URL
+- Tích hợp với hệ thống chat
+
