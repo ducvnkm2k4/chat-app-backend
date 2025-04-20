@@ -80,24 +80,4 @@ def extract_features(url):
     df = pd.DataFrame([features],columns=feature_names)
     return df
 
-def extract_features_text(text):
-    """Extract features from text for phishing detection"""
-    # Get character probabilities from training data
-    data_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'char_probabilities.csv')
-    char_probs = pd.read_csv(data_path)
-    
-    # Initialize feature vector
-    features = np.zeros(len(char_probs.columns) - 1)  # -1 for label column
-    
-    # Calculate character frequencies
-    text = text.lower()
-    total_chars = len(text)
-    if total_chars == 0:
-        return features
-        
-    for i, char in enumerate(char_probs.columns[:-1]):  # Exclude label column
-        features[i] = text.count(char) / total_chars
-        
-    return features
-
 

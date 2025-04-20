@@ -20,7 +20,7 @@ class PhishingDetector:
             
             # Make prediction
             if self.model:
-                is_phishing = bool(self.model.predict([features])[0])
+                is_phishing = bool(self.model.predict(features))
                 return is_phishing
             else:
                 return False, {'error': 'Model not loaded'}
