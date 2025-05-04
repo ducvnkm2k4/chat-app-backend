@@ -1,5 +1,5 @@
 */__pycache__
 */*/__pycache__
-venv
+.venv
 src/assets/firebase_admin.json
 src/assets/random_forest.pkl
